@@ -1,5 +1,3 @@
-(* open Ctypes *)
-
 let () =
   let fmt = Format.formatter_of_out_channel (open_out "sample_stubs.c") in
   Format.fprintf fmt "#include \"sample.h\"\n";
