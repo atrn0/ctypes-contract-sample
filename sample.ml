@@ -2,4 +2,6 @@
 
 module C = Bindings.C(Generated.Sample_generated)
 
-let () = print_endline (Int.to_string (C.f 100))
+let () = 
+  let output = C.f 10 in
+  print_endline (Int.to_string output)

@@ -12,8 +12,10 @@ let returning t = Returns t
 let (@->) f p = Function (f, p)
 let foreign : type a b. string -> (a -> b) fn -> (a -> b) =
   fun name t -> match t, name with
-| Function (CI.Primitive CI.Int, Returns (CI.Primitive CI.Int)), "f" ->
-  caml__1_f
+| Function
+    (CI.View {CI.ty = CI.Primitive CI.Int; write = x2; _},
+     Returns (CI.Primitive CI.Int)),
+  "f" -> (fun x1 -> let x3 = x2 x1 in caml__1_f x3)
 | _, s ->  Printf.ksprintf failwith "No match for %s" s
 
 
