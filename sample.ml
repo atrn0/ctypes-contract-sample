@@ -1,5 +1,3 @@
-(* open Ctypes *)
-
 module C = Bindings.C(Generated.Sample_generated)
 
 let () = 
