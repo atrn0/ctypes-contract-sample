@@ -1,7 +1,0 @@
-(library
- (name generated)
- (libraries ctypes.stubs bindings)
- (modules sample_generated)
- (foreign_stubs
-  (language c)
-  (names sample sample_stubs)))

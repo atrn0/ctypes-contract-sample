@@ -1,3 +1,5 @@
+(include_subdirs unqualified)
+
 (library
  (name bindings)
  (libraries ctypes)
@@ -12,3 +14,16 @@
  (name sample)
  (libraries generated ctypes)
  (modules sample))
+
+(library
+ (name generated)
+ (libraries ctypes.stubs bindings)
+ (modules cstubs_gen)
+ (foreign_stubs
+  (language c)
+  (names sample cstubs_gen)))
+
+(rule
+  (targets cstubs_gen.c cstubs_gen.ml)
+  (action
+    (run ./bindgen.exe)))
