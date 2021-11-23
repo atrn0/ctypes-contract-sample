@@ -1,6 +1,7 @@
 #include "sample.h"
 
 #include <stdint.h>
+#include <stdlib.h>
 
 int f(int n) { return n * 2; }
 
