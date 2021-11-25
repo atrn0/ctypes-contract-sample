@@ -16,9 +16,9 @@ module C(F: Cstubs.FOREIGN) = struct
   end
 
   module IP = struct
-    let output: 'a typ -> 'a typ = fun t -> t
+    let output: int (* size of buffer *) -> 'a typ -> 'a typ = fun _ t -> t
 
     let ip_addr_pton = 
-      foreign "ip_addr_pton" (string @-> output ocaml_bytes @-> returning int)
+      foreign "ip_addr_pton" (string @-> output 4 ocaml_bytes @-> returning int)
   end
 end
