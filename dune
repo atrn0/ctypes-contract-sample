@@ -7,7 +7,7 @@
 
 (executable
  (name bindgen)
- (libraries ctypes ctypes.stubs bindings)
+ (libraries ctypes ctypes.stubs bindings cbuf)
  (modules bindgen))
 
 (executable
@@ -24,6 +24,11 @@
   (names sample cstubs_gen)))
 
 (rule
-  (targets cstubs_gen.c cstubs_gen.ml)
+  (targets cstubs_gen.c cstubs_gen.ml cbuf_gen.ml)
   (action
     (run ./bindgen.exe)))
+
+(library
+ (name cbuf)
+ (libraries ctypes)
+ (modules cbuf))
