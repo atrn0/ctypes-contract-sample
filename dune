@@ -12,7 +12,7 @@
 
 (executable
  (name sample)
- (libraries generated ctypes)
+ (libraries generated ctypes cbuf_gen)
  (modules sample))
 
 (library
@@ -32,3 +32,8 @@
  (name cbuf)
  (libraries ctypes)
  (modules cbuf))
+
+(library
+ (name cbuf_gen)
+ (libraries ctypes generated)
+ (modules cbuf_gen))
