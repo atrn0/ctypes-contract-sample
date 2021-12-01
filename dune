@@ -2,7 +2,7 @@
 
 (library
  (name bindings)
- (libraries ctypes)
+ (libraries ctypes cbuf)
  (modules bindings))
 
 (executable

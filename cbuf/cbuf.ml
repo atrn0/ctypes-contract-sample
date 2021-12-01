@@ -44,3 +44,5 @@ let write_ml (fmt: Format.formatter) (module B : BINDINGS): unit =
   let module _ = B((val foreign)) in
   write_foreign fmt !bindings;
   print_endline "Cbuf.write_ml generated ml."
+
+let output _ t  = t
