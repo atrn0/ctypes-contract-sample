@@ -37,3 +37,8 @@
  (name cbuf_gen)
  (libraries ctypes generated)
  (modules cbuf_gen))
+
+(library
+  (name cbuf_gen_sample)
+  (libraries ctypes generated)
+  (modules cbuf_gen_sample))

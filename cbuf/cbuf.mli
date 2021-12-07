@@ -4,4 +4,4 @@ module type BINDINGS = functor (F : FOREIGN with type 'a result = unit) -> sig e
 
 val write_ml : Format.formatter -> (module BINDINGS) -> unit
 
-val output : int (* size of buffer *) -> 'a Ctypes.typ -> 'a Ctypes.typ
+type output = {size: int; buffer: bytes Ctypes.ocaml}
