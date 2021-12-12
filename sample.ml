@@ -1,8 +1,8 @@
 module C = Bindings.C(Generated.Cstubs_gen)
 
-let () = 
+(* let () = 
   let output = C.Sample.f 10 in
-  print_endline (Int.to_string output)
+  print_endline (Int.to_string output) *)
 
 let () =
   let open Cbuf_gen in

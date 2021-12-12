@@ -2,12 +2,12 @@
 
 (library
  (name bindings)
- (libraries ctypes cbuf)
+ (libraries ctypes ctypes.cbuf)
  (modules bindings))
 
 (executable
  (name bindgen)
- (libraries ctypes ctypes.stubs bindings cbuf)
+ (libraries ctypes ctypes.stubs bindings ctypes.cbuf)
  (modules bindgen))
 
 (executable
@@ -27,11 +27,6 @@
   (targets cstubs_gen.c cstubs_gen.ml cbuf_gen.ml)
   (action
     (run ./bindgen.exe)))
-
-(library
- (name cbuf)
- (libraries ctypes)
- (modules cbuf))
 
 (library
  (name cbuf_gen)

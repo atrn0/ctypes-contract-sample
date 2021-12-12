@@ -7,4 +7,4 @@ let () =
   Cstubs.write_ml fmt ~prefix:"caml_" (module Bindings.C);
 
   let fmt = Format.formatter_of_out_channel (open_out "cbuf_gen.ml") in
-  Cbuf.write_ml fmt (module Bindings.C);
+  Cbuf.write_ml fmt (module Bindings.C) ~module_name:"C.IP";

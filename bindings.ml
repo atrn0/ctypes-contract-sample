@@ -1,26 +1,29 @@
 module C(F: Cstubs.FOREIGN) = struct
   open F
+  let read (i: int) = i
 
-  module Sample = struct
-    let read (i: int) = i
+  let write (i: int) = 
+      assert(i > 0);
+      i + 1
 
-    let write (i: int) = 
-        assert(i > 0);
-        i + 1
-  
-    let t = Ctypes.view Ctypes.int ~read ~write
-  
+  let t = Ctypes.view Ctypes.int ~read ~write
+
+  module F = struct
     let f = foreign "f" (t @-> returning Ctypes.int)
   end
 
-  module IP = struct
-    let buffer = Ctypes.view Ctypes.ocaml_bytes 
-      ~read:(fun b: Cbuf.output -> {size=4; buffer=b})
-      ~write:(fun {buffer=b; _} -> b)
+  let buffer = Ctypes.view Ctypes.ocaml_bytes 
+    ~read:(fun b: Cbuf.cbuf_output -> {size=4; buffer=b})
+    ~write:(fun {buffer=b; _} -> b)
 
+  module IP = struct
     let ip_addr_pton = 
       foreign "ip_addr_pton" (Ctypes.string @-> buffer @-> returning Ctypes.int)
   end
+  
+  (* let buffer _ ty = ty
+  let ip_addr_pton = 
+    foreign "ip_addr_pton" (Ctypes.string @-> buffer 4 Ctypes.ocaml_bytes @-> returning Ctypes.int) *)
 end
 
 (* 
